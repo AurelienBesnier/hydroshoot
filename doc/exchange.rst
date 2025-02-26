@@ -15,18 +15,12 @@ which also considers mesophyll conductance to CO2 diffusion :math:`g_m`. The sol
 equations (following **Evers et al. 2010** supporting information):
 
 .. math::
-    \begin{array}
-
-    A_n = \frac{(C_c - \Gamma) \cdot x_1}{C_c + x_2} - R_d  \\
-
-    C_c = C_i - \frac{A_n}{g_m}  \\
-
-    g_{s, \ CO_2} = g_{s0, \ CO_2} + m_0 \cdot \frac{A_n + R_d}{C_i - \Gamma} \cdot f_w  \\
-
-    g_{s, \ CO_2} = \frac{A_n}{C_a - C_i - A_n \cdot r_{tb}}
-
+    \begin{array}{l}
+        A_n = \frac{(C_c - \Gamma) \cdot x_1}{C_c + x_2} - R_d  \\
+        C_c = C_i - \frac{A_n}{g_m}  \\
+        g_{s, CO_{2}} = g_{s0, CO_{2}} + m_0 \cdot \frac{A_n + R_d}{C_i - \Gamma} \cdot f_w  \\
+        g_{s, CO_{2}} = \frac{A_n}{C_a - C_i - A_n \cdot r_{tb}}
     \end{array}
-
 
 where
 :math:`A_n \ [\mu mol \ m^{-2} \ s^{-1}]` is net carbon assimilation rate,
@@ -68,14 +62,10 @@ where
 rate, RuBP-limited carboxylation rate, and Triose phosphates-limited carboxylation rate, given as:
 
 .. math::
-    \begin{array}
-
-    W_c = \frac{C_c \cdot V_{c, \ max}}{C_c + K_c \cdot \left(1 + \frac{O}{K_o} \right)}    \\
-
-    W_j = \frac{J}{4 + 8 \cdot \frac{\Gamma}{C_c}}    \\
-
-    W_p = \frac{3 \cdot TPU}{\left(1 - \frac{\Gamma}{C_c} \right)}
-
+    \begin{array}{l}
+        W_c = \frac{C_c \cdot V_{c, \max}}{C_c + K_c \cdot \left(1 + \frac{O}{K_o} \right)}    \\
+        W_j = \frac{J}{4 + 8 \cdot \frac{\Gamma}{C_c}}    \\
+        W_p = \frac{3 \cdot TPU}{\left(1 - \frac{\Gamma}{C_c} \right)}
     \end{array}
 
 where
@@ -151,12 +141,9 @@ is determined by leaf exposure to light during the last past days **(Prieto et a
 respectively in the two following equations:
 
 .. math::
-    \begin{array}
-
-    N_m = a_N \cdot \sum_{i=budburst}^d {\left( \max{\left( 0, T_{air, \ i} - T_b \right)} \right)} + b_N   \\
-
+    \begin{array}{l}
+    N_m = a_N \cdot \sum_{i=budburst}^d {\left( \max{\left( 0, T_{air, \i} - T_b \right)} \right)} + b_N   \\
     LMA = a_M \cdot \ \ln{(PPFD_{10})} + b_M
-
     \end{array}
 
 where
@@ -179,25 +166,9 @@ HydroShoot is provided with an empirical photoinhibition model which assumes tha
 stresses inhibit photosynthesis by reducing the electron transport rate (:math:`J`):
 
 .. math::
-    \begin{array}
-
-    \Delta H_d = \Delta H_{d, \ max} -
-        \max    \left(
-                    0, \
-                    \left( \Delta H_{d, \ max - \Delta H_{d, \ T}} \right) \cdot
-                    \min    \left(
-                                1, \ \frac{\Psi_{leaf} - \Psi_{leaf, \ max}}{\Psi_{leaf, \ min} - \Psi_{leaf, \ max}}
-                            \right)
-                \right) \\
-
-    \Delta H_{d, \ t} = \Delta H_{d, \ t1} -
-        \left( \Delta H_{d, \ t1} - \Delta H_{d, \ t2} \right) \cdot
-        \min    \left(
-            1, \ \max   \left(
-                            0, \ \frac{T_{leaf} - T_{leaf1}}{T_{leaf2} - T_{leaf1}}
-                        \right)
-                \right)
-
+    \begin{array}{l}
+    \Delta H_d = \Delta H_{d, \max} - \max \left( 0, \left( \Delta H_{d, \max} - \Delta H_{d, T} \right) \cdot \min \left( 1, \frac{\Psi_{leaf} - \Psi_{leaf, \max}}{\Psi_{leaf, \min} - \Psi_{leaf, \max}} \right) \right) \\
+    \Delta H_{d, t} = \Delta H_{d, t1} - \left( \Delta H_{d, t1} - \Delta H_{d, t2} \right) \cdot \min \left( 1, \max \left( 0, \frac{T_{leaf} - T_{leaf1}}{T_{leaf2} - T_{leaf1}} \right) \right)
     \end{array}
 
 where
@@ -236,7 +207,7 @@ with
     D_{H_2O} = D_{H_2O, 0} \cdot \frac{P_a}{P_v} \cdot \left( \frac{T_{leaf}}{273} \right)^{1.8}
 
 where
-:math:`D_{H_2O}` is the diffusion coefficient of H2O in the air at 0 :math:`^\circ C` (:math:`2.13 \cdot {10}^{-5} \ m^2 s^{-1}`),
+:math:`D_{H_2O}` is the diffusion coefficient of H2O in the air at 0 :math:`^\circ C` (:math:`2.13 \cdot {10}^{-5} \ m^2 s^{-1}`), 
 :math:`P_a \ [MPa]` is the ambient air pressure at 0 :math:`^\circ C`,
 :math:`P_v \ [MPa]` is water vapor partial pressure, and
 :math:`\Delta x \ [m]` is the thickness of the boundary layer defined following **Nobel (2005)** as:
@@ -253,13 +224,15 @@ Finally, the impact of water stress on stomatal conductance (i.e. via the :math:
 one of the following options:
 
 .. math::
-    f_w =   \left \{
-                \begin{array}{11}
-                    \frac{1}{1+\left( \frac{VPD}{D_0} \right)}                             &   (a) \\
-                    \frac{1}{1+\left( \frac{\Psi_{leaf}}{\Psi_{crit, \ leaf}} \right)^n}   &   (b) \\
-                    \frac{1}{1+\left( \frac{\Psi_{soil}}{\Psi_{crit, \ leaf}} \right)^n}   &   (c) \\
-                \end{array}
-            \right.
+    f_w =
+    \left\{
+    \begin{array}{cl}
+        \frac{1}{1+\left( \frac{VPD}{D_0} \right)}                             & (a) \\
+        \frac{1}{1+\left( \frac{\Psi_{leaf}}{\Psi_{crit, \ leaf}} \right)^n}   & (b) \\
+        \frac{1}{1+\left( \frac{\Psi_{soil}}{\Psi_{crit, \ leaf}} \right)^n}   & (c) \\
+    \end{array}
+    \right.
+
 
 where
 :math:`VPD \ [kPa]` is vapor pressure deficit (between the leaf and the air),
